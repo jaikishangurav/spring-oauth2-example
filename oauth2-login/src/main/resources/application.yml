@@ -1,0 +1,22 @@
+server:
+  port: 8081
+  
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/auth/realms/master
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: login-app
+            client-secret: 09347fc8-05e7-4d44-bdfd-dc4766fe3cc7
+            authorization-grant-type: authorization_code   
+            client-authentication-method: basic            
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, profile, email
+            client-name: keycloak 
